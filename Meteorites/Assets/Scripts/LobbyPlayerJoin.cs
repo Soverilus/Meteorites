@@ -15,10 +15,15 @@ public class LobbyPlayerJoin : MonoBehaviour {
 	}
 
 	void Update () {
-        if (Input.GetAxis("AnyFire") > 0) {
+        if (Input.GetAxis("AnyFire") > 0 || Input.GetAxis("AnySpecial") > 0) {
             for (int j = 1; j <= 4 /*|| playerConnect[j - 1] == true*/; j++) {
-                if (Input.GetAxis("Fire" + j.ToString()) > 0) {
+                if (Input.GetAxis("Fire" + j.ToString()) > 0 && playerConnect[j - 1] == false) {
                     playerConnect[j - 1] = true;
+                    Debug.Log("Player " + j + " is john");
+                }
+                if (Input.GetAxis("Special" + j.ToString()) > 0 && playerConnect[j - 1] == true) {
+                    playerConnect[j - 1] = false;
+                    Debug.Log("Player " + j + " has right");
                 }
             }
         }

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23316677359801932}
   - component: {fileID: 135077945843933234}
   - component: {fileID: 54129847662466110}
+  - component: {fileID: 114237350913897420}
   m_Layer: 0
   m_Name: MeteoriteS0
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1288776019574016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 13.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,6 +101,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &114237350913897420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1288776019574016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734859da5d43b6545a8c036f53486734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInvisible: 0
+  topX: 0
+  topZ: 0
+  botX: 0
+  botZ: 0
+  negValx: 0
+  negValz: 0
 --- !u!135 &135077945843933234
 SphereCollider:
   m_ObjectHideFlags: 1
