@@ -3,35 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WrapChecker : MonoBehaviour {
-    public bool isInvisible = true;
+    public bool hasWrapped = false;
+    Renderer checkRender;
 
-    public float topX;
-    public float topZ;
-    public float botX;
-    public float botZ;
+    float maxX;
+    float maxZ;
+    float minX;
+    float minZ;
 
     public int negValx;
     public int negValz;
 
-    public void GetRangeExtent(float maX, float miX, float maZ, float miZ) {
-        topX = maX;
-        topZ = maZ;
-        botX = miX;
-        botZ = miZ;
+    private void Start() {
+        checkRender = GetComponent<Renderer>();
+    }
+
+    public void GetRangeExtent(float upX, float dowX, float upZ, float dowZ) {
+        maxX = upX;
+        maxZ = upZ;
+        minX = dowX;
+        minZ = dowZ;
     }
     private void Update() {
-        if (transform.position.x >= topX || transform.position.x <= botX) {
-            negValx = -1;
-        }
-        else {
-            negValx = 1;
-        }
+        if (checkRender.isVisible) {
+            hasWrapped = false;
+            if (transform.position.x >= maxX || transform.position.x <= minX) {
+                negValx = -1;
+            }
+            else {
+                negValx = 1;
+            }
 
-        if (transform.position.z >= topZ || transform.position.z <= botZ) {
-            negValz = -1;
+            if (transform.position.z >= maxZ || transform.position.z <= minZ) {
+                negValz = -1;
+            }
+            else {
+                negValz = 1;
+            }
         }
-        else {
-            negValz = 1;
+    }
+    public void WrapAround(Vector3 pos) {
+        Debug.Log("reached here2");
+        if (!checkRender.isVisible && hasWrapped == false) {
+            hasWrapped = true;
+            transform.position = new Vector3(pos.x * negValx, 0f, pos.z * negValz);
+            Debug.Log("reached here final");
         }
     }
 }

@@ -24,9 +24,10 @@ GameObject:
   - component: {fileID: 54738561270270848}
   - component: {fileID: 114293753251302132}
   - component: {fileID: 64206768462574746}
+  - component: {fileID: 114479752438970708}
   m_Layer: 0
   m_Name: MeteoriteS2
-  m_TagString: Untagged
+  m_TagString: Meteorite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +94,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1380462643723622}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -126,10 +127,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734859da5d43b6545a8c036f53486734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInvisible: 0
-  topX: 0
-  topZ: 0
-  botX: 0
-  botZ: 0
+  hasWrapped: 0
   negValx: 0
   negValz: 0
+--- !u!114 &114479752438970708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1380462643723622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b274a26fe3ecfea4b9eb3aa79c8a3aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50

@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class MeteorBehaviour : MonoBehaviour {
     [SerializeField]
-    float maxSpeed;
+    float speed;
 
     Rigidbody myRB;
 
 	void Start () {
         myRB = GetComponent<Rigidbody>();
-        myRB.velocity = new Vector3(10f, 0f, 5f);
 	}
 
 	void Update () {
-		
+		if (myRB.velocity.magnitude <= 0.01f) {
+            StartingVelocity(new Vector3(Random.Range(-100f, 100f), 0f, Random.Range(-100f, 100f)));
+        }
 	}
+
+    void StartingVelocity(Vector3 i) {
+        Vector3 dir = i.normalized;
+        myRB.velocity = dir * speed;
+    }
 }

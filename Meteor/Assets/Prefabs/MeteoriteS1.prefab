@@ -24,9 +24,10 @@ GameObject:
   - component: {fileID: 54533491046052322}
   - component: {fileID: 114391581007687646}
   - component: {fileID: 64390373686083674}
+  - component: {fileID: 114259824059536222}
   m_Layer: 0
   m_Name: MeteoriteS1
-  m_TagString: Untagged
+  m_TagString: Meteorite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +116,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8c0fd0fab1293074bbe5d76ee643cdeb, type: 3}
+--- !u!114 &114259824059536222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1055341714426814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b274a26fe3ecfea4b9eb3aa79c8a3aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!114 &114391581007687646
 MonoBehaviour:
   m_ObjectHideFlags: 1
