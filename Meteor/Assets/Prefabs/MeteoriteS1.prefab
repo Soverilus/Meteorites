@@ -94,7 +94,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1055341714426814}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -127,7 +127,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b274a26fe3ecfea4b9eb3aa79c8a3aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 20
+  dist: 1
+  meteorLevel: 1
+  meteorSubtype: {fileID: 1288776019574016, guid: 251e8511a574c694b88b2639f800be0d,
+    type: 2}
+  maxHealth: 50
+  curHealth: 0
+  myRB: {fileID: 0}
 --- !u!114 &114391581007687646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,10 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734859da5d43b6545a8c036f53486734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInvisible: 0
-  topX: 0
-  topZ: 0
-  botX: 0
-  botZ: 0
+  hasWrapped: 0
   negValx: 0
   negValz: 0

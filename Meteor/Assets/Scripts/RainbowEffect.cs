@@ -6,9 +6,9 @@ public class RainbowEffect : MonoBehaviour {
 
     Color colorA;
     Color colorB;
-    Light meRainboi;
+    //Light meRainboi;
     void Start() {
-        meRainboi = GetComponent<Light>();
+        //meRainboi = GetComponent<Light>();
     }
 
     void Update() {

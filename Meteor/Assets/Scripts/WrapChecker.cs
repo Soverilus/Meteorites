@@ -43,11 +43,11 @@ public class WrapChecker : MonoBehaviour {
         }
     }
     public void WrapAround(Vector3 pos) {
-        Debug.Log("reached here2");
+        //Debug.Log("reached here2");
         if (!checkRender.isVisible && hasWrapped == false) {
             hasWrapped = true;
             transform.position = new Vector3(pos.x * negValx, 0f, pos.z * negValz);
-            Debug.Log("reached here final");
+            //Debug.Log("reached here final");
         }
     }
 }

@@ -36,15 +36,20 @@ public class ScreenWrap : MonoBehaviour {
 
     private void Update() {
         for (int i = 0; i < myObjects.Count; i++) {
-            Debug.Log("reached here5 + " + i);
-            GameObject obj = myObjects[i];
-            Vector3 pos = obj.transform.position;
-            if (pos.x >= maxX || pos.x <= minX || pos.z >= maxZ || pos.z <= minZ) {
-                Debug.Log("reached here4");
-                if (obj.GetComponent<WrapChecker>() != null) {
-                    WrapChecker checkWrap = obj.GetComponent<WrapChecker>();
-                    checkWrap.WrapAround(pos);
-                    Debug.Log("reached here3");
+            if (myObjects[i] == null) {
+                myObjects.Remove(myObjects[i]);
+            }
+            else {
+                //Debug.Log("reached here5 + " + i);
+                GameObject obj = myObjects[i];
+                Vector3 pos = obj.transform.position;
+                if (pos.x >= maxX || pos.x <= minX || pos.z >= maxZ || pos.z <= minZ) {
+                    //Debug.Log("reached here4");
+                    if (obj.GetComponent<WrapChecker>() != null) {
+                        WrapChecker checkWrap = obj.GetComponent<WrapChecker>();
+                        checkWrap.WrapAround(pos);
+                        //Debug.Log("reached here3");
+                    }
                 }
             }
         }
