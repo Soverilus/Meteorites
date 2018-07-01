@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 23770621420189476}
   - component: {fileID: 135539167273627008}
   - component: {fileID: 54534406507534524}
-  - component: {fileID: 114331976816397694}
   - component: {fileID: 114403034924504836}
+  - component: {fileID: 114522626460416212}
   m_Layer: 0
   m_Name: TestMeteor
   m_TagString: Untagged
@@ -102,18 +102,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &114331976816397694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1719441144451734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b274a26fe3ecfea4b9eb3aa79c8a3aab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 0
 --- !u!114 &114403034924504836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,13 +113,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734859da5d43b6545a8c036f53486734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInvisible: 0
-  topX: 0
-  topZ: 0
-  botX: 0
-  botZ: 0
+  hasWrapped: 0
   negValx: 0
   negValz: 0
+--- !u!114 &114522626460416212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1719441144451734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3683d832d75df504b84831f5b5be6759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 0
+  maxLives: 4
+  speed: 10
 --- !u!135 &135539167273627008
 SphereCollider:
   m_ObjectHideFlags: 1

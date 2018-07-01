@@ -10,7 +10,7 @@ public class ScreenWrap : MonoBehaviour {
     float minX;
     float minZ;
 
-    public List<GameObject> myObjects;
+    public List<GameObject> myMeteors;
 
     private void Start() {
         myCol = GetComponent<Collider>();
@@ -25,8 +25,8 @@ public class ScreenWrap : MonoBehaviour {
     }
 
     private void OnTriggerStay(Collider other) {
-        if (!myObjects.Contains(other.gameObject)) {
-            myObjects.Add(other.gameObject);
+        if (!myMeteors.Contains(other.gameObject)) {
+            myMeteors.Add(other.gameObject);
             if (other.gameObject.GetComponent<WrapChecker>() != null) {
                 WrapChecker checkWrap = other.gameObject.GetComponent<WrapChecker>();
                 checkWrap.GetRangeExtent(maxX, minX, maxZ, minZ);
@@ -35,13 +35,13 @@ public class ScreenWrap : MonoBehaviour {
     }
 
     private void Update() {
-        for (int i = 0; i < myObjects.Count; i++) {
-            if (myObjects[i] == null) {
-                myObjects.Remove(myObjects[i]);
+        for (int i = 0; i < myMeteors.Count; i++) {
+            if (myMeteors[i] == null) {
+                myMeteors.Remove(myMeteors[i]);
             }
             else {
                 //Debug.Log("reached here5 + " + i);
-                GameObject obj = myObjects[i];
+                GameObject obj = myMeteors[i];
                 Vector3 pos = obj.transform.position;
                 if (pos.x >= maxX || pos.x <= minX || pos.z >= maxZ || pos.z <= minZ) {
                     //Debug.Log("reached here4");

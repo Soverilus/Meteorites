@@ -44,8 +44,8 @@ public class MeteorBehaviour : MonoBehaviour {
             otherScript.DamageMe(maxHealth / 2, transform, false);
         }
         if (other.gameObject.GetComponent<PlayerBehaviour>() != null) {
-            //PlayerBehaviour playerScript = other.gameObject.GetComponent<PlayerBehaviour>();
-            //playerScript.DamageMe(maxHealth / 2, transform, false);
+            PlayerBehaviour playerScript = other.gameObject.GetComponent<PlayerBehaviour>();
+            playerScript.DamageMe(transform, false);
         }
     }
 
