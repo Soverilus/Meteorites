@@ -47,6 +47,11 @@ public class MeteorBehaviour : MonoBehaviour {
             PlayerBehaviour playerScript = other.gameObject.GetComponent<PlayerBehaviour>();
             playerScript.DamageMe(transform, false);
         }
+        if (other.gameObject.GetComponent<BulletCheck>() != null) {
+            BulletCheck bulletScript = other.gameObject.GetComponent<BulletCheck>();
+            DamageMe(bulletScript.damage, other.transform, true);
+            Destroy(other.gameObject);
+        }
     }
 
     public void DamageMe(int dmg, Transform other, bool playerShot) {

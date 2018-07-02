@@ -43,8 +43,10 @@ public class LobbyPlayerJoin : MonoBehaviour {
         }
         else if (gameStart && doOnce) {
             for (int i = 0; i < playerObjects.Length; i++) {
-                PlayerBehaviour playerActivate = playerObjects[i].GetComponent<PlayerBehaviour>();
-                playerActivate.gameStart = true;
+                if (playerObjects[i] != null) {
+                    PlayerBehaviour playerActivate = playerObjects[i].GetComponent<PlayerBehaviour>();
+                    playerActivate.gameStart = true;
+                }
             }
             doOnce = false;
         }

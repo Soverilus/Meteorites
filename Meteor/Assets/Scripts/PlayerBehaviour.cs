@@ -3,48 +3,86 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour {
+    //sorry for the lack of commenting. I was trying to get this done as quickly as possible. If you're reading this then I didn't have time later in the week to add comments to everything.
+    float timer;
+
     [HideInInspector]
     public bool gameStart = false;
     public int player;
+
     [SerializeField]
     int maxLives;
     int curLives;
-    Vector3 rotationDir;
-    public float speed;
-    float rotateSpeed;
+
+    Quaternion rotationDir;
+    Vector3 targetDir;
+    public float rotateSpeed;
     Rigidbody myRB;
-    Vector3 joystickInput;
+    Vector3 leftStickInput;
+
+    public int maxAmmo;
+    int ammo;
+    bool shot = false;
+    public float shotSpeed;
+    [SerializeField]
+    GameObject[] cannon;
+    public GameObject bullet;
+    public float reloadTime;
+    float reloadTimer;
+
+    public float speed;
 
     void Start() {
         curLives = maxLives;
         myRB = GetComponent<Rigidbody>();
-        rotateSpeed = speed * Time.deltaTime;
     }
 
-    private void FixedUpdate() {
+    private void Update() {
+        timer += Time.deltaTime;
+        reloadTimer += Time.deltaTime;
+
         if (gameStart) {
-            Flight();
+            InGameUpdate();
         }
     }
 
-    void Update() {
-        if (gameStart) {
-            if (myRB.velocity.sqrMagnitude >= 0.1f) {
-                RotateForwards();
-            }
-        }
-    }
 
-    void RotateForwards() {
-        rotationDir = Vector3.RotateTowards(myRB.transform.forward, myRB.velocity.normalized, rotateSpeed, 0.0f);
-        transform.rotation = Quaternion.LookRotation(rotationDir);
-        rotationDir = Vector3.RotateTowards(myRB.transform.up, myRB.velocity.normalized, rotateSpeed, 0.0f);
-        transform.rotation = Quaternion.LookRotation(rotationDir);
+
+    void InGameUpdate() {
+        leftStickInput = new Vector3(Input.GetAxis("Joystick" + player + "x"), 0f, Input.GetAxis("Joystick" + player + "y")).normalized;
+        if (leftStickInput.sqrMagnitude > 0.1f) {
+            RotateForwards();
+        }
+        if (Input.GetAxisRaw("Fire" + player) > 0 && ammo > 0 && shot == false) {
+            shot = true;
+            Shoot();
+            ammo -= 1;
+        }
+        if (Input.GetAxisRaw("Fire" + player) < 1) {
+            shot = false;
+        }
+        if (reloadTimer >= reloadTime && ammo < maxAmmo) {
+            ammo += 1;
+            reloadTimer = 0f;
+        }
     }
 
     void Flight() {
-        joystickInput = new Vector3(Input.GetAxis("Joystick" + player + "x"), 0f, Input.GetAxis("Joystick" + player + "y")).normalized;
+        //TODO
+    }
 
+    void RotateForwards() {
+        targetDir = (leftStickInput).normalized;
+        rotationDir = Quaternion.LookRotation(targetDir);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotationDir, Time.deltaTime * rotateSpeed);
+    }
+
+    void Shoot() {
+        Debug.Log("I've shot you");
+        int whichCannon = Random.Range(0, 2);
+        GameObject projectile = Instantiate(bullet, cannon[whichCannon].transform.position, transform.rotation);
+        Rigidbody projRB = projectile.GetComponent<Rigidbody>();
+        projRB.velocity = -projectile.transform.forward * Time.deltaTime * shotSpeed;
     }
 
     public void DamageMe(Transform other, bool playerShot) {

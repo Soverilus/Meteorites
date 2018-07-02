@@ -556,6 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 849864462}
+  timerTime: 3
   myShips: []
 --- !u!114 &1719371198
 MonoBehaviour:

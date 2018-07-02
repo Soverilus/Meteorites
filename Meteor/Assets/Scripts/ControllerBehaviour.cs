@@ -7,7 +7,7 @@ public class ControllerBehaviour : MonoBehaviour {
     LobbyPlayerJoin gameStart;
     [SerializeField]
     Text timer;
-    float timerTime = 10f;
+    public float timerTime = 10f;
     public List<GameObject> myShips;
 
     void Start() {
@@ -34,7 +34,7 @@ public class ControllerBehaviour : MonoBehaviour {
     void TickTock() {
         timerTime -= Time.deltaTime;
         timer.text = timerTime.ToString("F0");
-        if(timerTime < 1 && timerTime > 0) {
+        if (timerTime < 1 && timerTime > 0) {
             timer.text = 1.ToString();
         }
         if (timerTime <= 0f) {
