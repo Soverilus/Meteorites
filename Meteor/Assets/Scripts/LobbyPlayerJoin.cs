@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class LobbyPlayerJoin : MonoBehaviour {
+    bool doOnce = true;
     [HideInInspector]
     public bool gameStart = false;
     [HideInInspector]
@@ -15,13 +16,13 @@ public class LobbyPlayerJoin : MonoBehaviour {
     [SerializeField]
     Transform[] shipSpawns;
 
-	void Start () {
+    void Start() {
         shipListController = GetComponent<ControllerBehaviour>();
         playerConnect = new bool[4];
-        for(int i = 0; i < playerConnect.Length; i++) {
+        for (int i = 0; i < playerConnect.Length; i++) {
             playerConnect[i] = false;
         }
-	}
+    }
 
     void Update() {
         if (!gameStart) {
@@ -39,6 +40,13 @@ public class LobbyPlayerJoin : MonoBehaviour {
                     }
                 }
             }
+        }
+        else if (gameStart && doOnce) {
+            for (int i = 0; i < playerObjects.Length; i++) {
+                PlayerBehaviour playerActivate = playerObjects[i].GetComponent<PlayerBehaviour>();
+                playerActivate.gameStart = true;
+            }
+            doOnce = false;
         }
     }
 
