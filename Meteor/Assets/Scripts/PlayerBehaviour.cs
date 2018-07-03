@@ -30,6 +30,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public float reloadTime;
     float reloadTimer;
 
+    public float maxSpeed;
     public float speed;
 
     void Start() {
@@ -46,7 +47,11 @@ public class PlayerBehaviour : MonoBehaviour {
         }
     }
 
-
+    private void FixedUpdate() {
+        if (gameStart) {
+            Flight();
+        }
+    }
 
     void InGameUpdate() {
         leftStickInput = new Vector3(Input.GetAxis("Joystick" + player + "x"), 0f, Input.GetAxis("Joystick" + player + "y")).normalized;
@@ -68,7 +73,10 @@ public class PlayerBehaviour : MonoBehaviour {
     }
 
     void Flight() {
-        //TODO
+        myRB.AddForce(transform.forward * Input.GetAxis("Thrust" + player) * speed * myRB.mass * Time.fixedDeltaTime);
+        if (myRB.velocity.sqrMagnitude > maxSpeed) {
+            myRB.velocity = Mathf.Clamp(myRB.velocity.magnitude, 0f, maxSpeed) * myRB.velocity.normalized;
+        }
     }
 
     void RotateForwards() {

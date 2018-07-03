@@ -204,10 +204,11 @@ MonoBehaviour:
   maxLives: 4
   rotateSpeed: 10
   maxAmmo: 4
-  shotSpeed: 3000
+  shotSpeed: 7000
   cannon:
   - {fileID: 1489936496458330}
   - {fileID: 1346241529417188}
   bullet: {fileID: 1295533965248958, guid: 78326e399936059429ae11a7fb2d503d, type: 2}
   reloadTime: 0
-  speed: 10
+  maxSpeed: 100
+  speed: 5000

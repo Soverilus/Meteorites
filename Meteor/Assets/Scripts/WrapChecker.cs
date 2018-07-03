@@ -5,6 +5,7 @@ using UnityEngine;
 public class WrapChecker : MonoBehaviour {
     public bool hasWrapped = false;
     Renderer checkRender;
+    Collider myCol;
 
     float maxX;
     float maxZ;
@@ -16,6 +17,12 @@ public class WrapChecker : MonoBehaviour {
 
     private void Start() {
         checkRender = GetComponent<Renderer>();
+        if (GetComponent<MeshCollider>() != null) {
+            myCol = GetComponent<MeshCollider>();
+        }
+        else {
+            myCol = GetComponent<Collider>();
+        }
     }
 
     public void GetRangeExtent(float upX, float dowX, float upZ, float dowZ) {
@@ -38,6 +45,7 @@ public class WrapChecker : MonoBehaviour {
                 negValz = -1;
             }
             else {
+                myCol.enabled = false;
                 negValz = 1;
             }
         }
