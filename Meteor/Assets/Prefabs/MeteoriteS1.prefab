@@ -147,5 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasWrapped: 0
+  collisionTimer: 0
+  collisionTimerMax: 0.25
   negValx: 0
   negValz: 0

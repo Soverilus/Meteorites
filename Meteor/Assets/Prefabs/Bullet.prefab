@@ -41,7 +41,7 @@ Transform:
   m_GameObject: {fileID: 1295533965248958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 2}
+  m_LocalScale: {x: 2, y: 2, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasWrapped: 0
+  collisionTimer: 0
+  collisionTimerMax: 0
   negValx: 0
   negValz: 0
 --- !u!114 &114569490779097698

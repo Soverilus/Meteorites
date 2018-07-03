@@ -531,57 +531,38 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 65363744763494262, guid: ff1a5e6794816bd4cb6d400c7b836231,
+    - target: {fileID: 114408167152374830, guid: ff1a5e6794816bd4cb6d400c7b836231,
         type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 849864462}
+    - target: {fileID: 114817665933531678, guid: ff1a5e6794816bd4cb6d400c7b836231,
+        type: 2}
+      propertyPath: shipSpawns.Array.data[0]
+      value: 
+      objectReference: {fileID: 641308748}
+    - target: {fileID: 114817665933531678, guid: ff1a5e6794816bd4cb6d400c7b836231,
+        type: 2}
+      propertyPath: shipSpawns.Array.data[1]
+      value: 
+      objectReference: {fileID: 1206436153}
+    - target: {fileID: 114817665933531678, guid: ff1a5e6794816bd4cb6d400c7b836231,
+        type: 2}
+      propertyPath: shipSpawns.Array.data[2]
+      value: 
+      objectReference: {fileID: 1988946751}
+    - target: {fileID: 114817665933531678, guid: ff1a5e6794816bd4cb6d400c7b836231,
+        type: 2}
+      propertyPath: shipSpawns.Array.data[3]
+      value: 
+      objectReference: {fileID: 70255054}
+    - target: {fileID: 1967428341022316, guid: ff1a5e6794816bd4cb6d400c7b836231, type: 2}
+      propertyPath: m_TagString
+      value: Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff1a5e6794816bd4cb6d400c7b836231, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1719371196 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1967428341022316, guid: ff1a5e6794816bd4cb6d400c7b836231,
-    type: 2}
-  m_PrefabInternal: {fileID: 1719371195}
---- !u!114 &1719371197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1719371196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b34f0513f91a4e488becd775670b529, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timer: {fileID: 849864462}
-  timerTime: 3
-  myShips: []
---- !u!114 &1719371198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1719371196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c38d6fd7e738f948baff1a7ae98c776, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameStart: 0
-  playerObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerObject: {fileID: 1939278266936944, guid: a8bccd1dd0f62b342949ef3a493a27c0,
-    type: 2}
-  shipSpawns:
-  - {fileID: 641308748}
-  - {fileID: 1206436153}
-  - {fileID: 1988946751}
-  - {fileID: 70255054}
 --- !u!1 &1988946750
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,11 +629,6 @@ Prefab:
     - target: {fileID: 4199879664979724, guid: 65d1b0ae9aec595408c5a444f3cb38a8, type: 2}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20245664371925536, guid: 65d1b0ae9aec595408c5a444f3cb38a8,
-        type: 2}
-      propertyPath: field of view
-      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65d1b0ae9aec595408c5a444f3cb38a8, type: 2}

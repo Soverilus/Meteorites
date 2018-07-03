@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114237350913897420}
   - component: {fileID: 64040720243709362}
   - component: {fileID: 114600946563535044}
+  - component: {fileID: 114970206983446416}
   m_Layer: 10
   m_Name: MeteoriteS0
   m_TagString: Meteorite
@@ -128,6 +129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasWrapped: 0
+  collisionTimer: 0
+  collisionTimerMax: 0.25
   negValx: 0
   negValz: 0
 --- !u!114 &114600946563535044
@@ -148,3 +151,14 @@ MonoBehaviour:
   maxHealth: 26
   curHealth: 0
   myRB: {fileID: 0}
+--- !u!114 &114970206983446416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1288776019574016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22bf4cc1cd70524caf3b5fa518b6062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

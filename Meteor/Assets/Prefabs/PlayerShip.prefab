@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasWrapped: 0
+  collisionTimer: 0
+  collisionTimerMax: 10
   negValx: 0
   negValz: 0
 --- !u!114 &114396148130203106
@@ -210,5 +212,5 @@ MonoBehaviour:
   - {fileID: 1346241529417188}
   bullet: {fileID: 1295533965248958, guid: 78326e399936059429ae11a7fb2d503d, type: 2}
   reloadTime: 0
-  maxSpeed: 100
-  speed: 5000
+  maxSpeed: 75
+  speed: 6000

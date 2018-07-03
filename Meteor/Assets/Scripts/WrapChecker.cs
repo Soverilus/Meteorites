@@ -6,6 +6,8 @@ public class WrapChecker : MonoBehaviour {
     public bool hasWrapped = false;
     Renderer checkRender;
     Collider myCol;
+    public float collisionTimer;
+    public float collisionTimerMax;
 
     float maxX;
     float maxZ;
@@ -20,9 +22,13 @@ public class WrapChecker : MonoBehaviour {
         if (GetComponent<MeshCollider>() != null) {
             myCol = GetComponent<MeshCollider>();
         }
+        else if (GetComponent<SphereCollider>() != null) {
+            myCol = GetComponent<SphereCollider>();
+        }
         else {
             myCol = GetComponent<Collider>();
         }
+        myCol.isTrigger = true;
     }
 
     public void GetRangeExtent(float upX, float dowX, float upZ, float dowZ) {
@@ -32,8 +38,12 @@ public class WrapChecker : MonoBehaviour {
         minZ = dowZ;
     }
     private void Update() {
+        if (collisionTimer < collisionTimerMax) {
+            collisionTimer += Time.deltaTime;
+        }
         if (checkRender.isVisible) {
             hasWrapped = false;
+            myCol.isTrigger = true;
             if (transform.position.x >= maxX || transform.position.x <= minX) {
                 negValx = -1;
             }
@@ -45,7 +55,9 @@ public class WrapChecker : MonoBehaviour {
                 negValz = -1;
             }
             else {
-                myCol.enabled = false;
+                if (collisionTimer >= collisionTimerMax) {
+                    myCol.isTrigger = false;
+                }
                 negValz = 1;
             }
         }

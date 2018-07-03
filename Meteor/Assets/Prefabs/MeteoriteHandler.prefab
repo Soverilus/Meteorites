@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 114347932638363396}
   - component: {fileID: 114780983501000914}
   - component: {fileID: 65363744763494262}
+  - component: {fileID: 114408167152374830}
+  - component: {fileID: 114817665933531678}
   m_Layer: 0
   m_Name: MeteoriteHandler
   m_TagString: Untagged
@@ -69,6 +71,20 @@ MonoBehaviour:
   - {fileID: 1288776019574016, guid: 251e8511a574c694b88b2639f800be0d, type: 2}
   - {fileID: 1055341714426814, guid: 59366cd69028db5458fdf0b645ec90a7, type: 2}
   - {fileID: 1380462643723622, guid: 3458df647961bb64caae158a22fdda74, type: 2}
+--- !u!114 &114408167152374830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967428341022316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b34f0513f91a4e488becd775670b529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 0}
+  timerTime: 3
+  myShips: []
 --- !u!114 &114780983501000914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,4 +96,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69cc30d6a13d6e64196be0e5dc6a00ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myObjects: []
+  myMeteors: []
+--- !u!114 &114817665933531678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967428341022316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c38d6fd7e738f948baff1a7ae98c776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameStart: 0
+  playerObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerObject: {fileID: 1939278266936944, guid: a8bccd1dd0f62b342949ef3a493a27c0,
+    type: 2}
+  shipSpawns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

@@ -4,24 +4,32 @@ using UnityEngine;
 
 public class ScreenWrap : MonoBehaviour {
 
+    SpawnMeteorite spawnOne;
     Collider myCol;
     float maxX;
     float maxZ;
-    float minX;
-    float minZ;
+
+    Vector3[] spawnExtents = new Vector3[4];
 
     public List<GameObject> myMeteors;
 
     private void Start() {
         myCol = GetComponent<Collider>();
         GetExtents();
+        GetSpawnExtents();
+        spawnOne = GetComponent<SpawnMeteorite>();
+        MakeMoreMeteor();
     }
 
     void GetExtents() {
         maxX = myCol.bounds.extents.x;
         maxZ = myCol.bounds.extents.z;
-        minX = -myCol.bounds.extents.x;
-        minZ = -myCol.bounds.extents.z;
+    }
+    void GetSpawnExtents() {
+        spawnExtents[0] = new Vector3(-maxX - 0.5f, 0, maxZ + 0.5f);
+        spawnExtents[1] = new Vector3(maxX + 0.5f, 0, maxZ + 0.5f);
+        spawnExtents[2] = new Vector3(maxX + 0.5f, 0, -maxZ - 0.5f);
+        spawnExtents[3] = new Vector3(-maxX - 0.5f, 0, -maxZ - 0.5f);
     }
 
     private void OnTriggerStay(Collider other) {
@@ -29,7 +37,7 @@ public class ScreenWrap : MonoBehaviour {
             myMeteors.Add(other.gameObject);
             if (other.gameObject.GetComponent<WrapChecker>() != null) {
                 WrapChecker checkWrap = other.gameObject.GetComponent<WrapChecker>();
-                checkWrap.GetRangeExtent(maxX, minX, maxZ, minZ);
+                checkWrap.GetRangeExtent(maxX, -maxX, maxZ, -maxZ);
             }
         }
     }
@@ -43,7 +51,7 @@ public class ScreenWrap : MonoBehaviour {
                 //Debug.Log("reached here5 + " + i);
                 GameObject obj = myMeteors[i];
                 Vector3 pos = obj.transform.position;
-                if (pos.x >= maxX || pos.x <= minX || pos.z >= maxZ || pos.z <= minZ) {
+                if (pos.x >= maxX || pos.x <= -maxX || pos.z >= maxZ || pos.z <= -maxZ) {
                     //Debug.Log("reached here4");
                     if (obj.GetComponent<WrapChecker>() != null) {
                         WrapChecker checkWrap = obj.GetComponent<WrapChecker>();
@@ -53,5 +61,28 @@ public class ScreenWrap : MonoBehaviour {
                 }
             }
         }
+    }
+    public void MakeMoreMeteor() {
+        Vector3 pos;
+        pos = new Vector3(Random.Range(spawnExtents[0].x, spawnExtents[1].x), 0f, spawnExtents[0].z); ;
+        int upRightDownLeft = Random.Range(0, 4);
+        int meteorType = Random.Range(1, 3);
+        if (upRightDownLeft == 0) {
+            pos = new Vector3(Random.Range(spawnExtents[0].x, spawnExtents[1].x), 0f, spawnExtents[0].z);
+        }
+        else if (upRightDownLeft == 1) {
+            pos = new Vector3(spawnExtents[1].x, 0f, Random.Range(spawnExtents[2].z, spawnExtents[1].z));
+        }
+        else if (upRightDownLeft == 2) {
+            pos = new Vector3(Random.Range(spawnExtents[2].x, spawnExtents[3].x), 0f, spawnExtents[2].z);
+        }
+        else if (upRightDownLeft == 3) {
+            pos = new Vector3(spawnExtents[3].x, 0f, Random.Range(spawnExtents[0].z, spawnExtents[3].z));
+        }
+        else {
+            Debug.Log("Error: ScreenWrap spawn extents reporting value above maximum");
+        }
+        spawnOne.SpawnOne(meteorType, pos);
+        Debug.Log(pos);
     }
 }
