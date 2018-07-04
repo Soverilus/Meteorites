@@ -13,8 +13,8 @@ public class ControllerBehaviour : MonoBehaviour {
 
     void Awake() {
         originalTime = timerTime;
-        foreach (GameObject myShip in GameObject.FindGameObjectsWithTag("Player")) {
-            Destroy(myShip);
+        foreach (GameObject wierdProblematicAutomatedGameObject in GameObject.FindGameObjectsWithTag("Player")) {
+            Destroy(wierdProblematicAutomatedGameObject);
         }
     }
 
@@ -30,7 +30,7 @@ public class ControllerBehaviour : MonoBehaviour {
     void Update() {
         if (timerTime > 0f) {
             FindShips();
-            if (myShips.Count < 1) {
+            if (myShips.Count < 4) {
                 timerTime = originalTime;
             }
         }
