@@ -6,6 +6,8 @@ public class PlayerBehaviour : MonoBehaviour {
     //sorry for the lack of commenting. I was trying to get this done as quickly as possible. If you're reading this then I didn't have time later in the week to add comments to everything.
     float timer;
 
+    MeshRenderer myRend;
+
     [HideInInspector]
     public bool gameStart = false;
     public int player;
@@ -34,8 +36,37 @@ public class PlayerBehaviour : MonoBehaviour {
     public float speed;
 
     void Start() {
+        myRend = GetComponent<MeshRenderer>();
+        SetPlayerColor();
         curLives = maxLives;
         myRB = GetComponent<Rigidbody>();
+    }
+
+    void SetPlayerColor() {
+        float r = 0.5f;
+        float g = 0.5f;
+        float b = 0.5f;
+        if (player == 1 || player == 3) {
+            r = 1f;
+            b = 0.5f;
+            if (player == 1) {
+                g = 0.5f;
+            }
+            else {
+                g = 1f;
+            }
+        }
+        else if (player == 2 || player == 4) {
+            b = 1f;
+            r = 0.5f;
+            if (player == 2) {
+                g = 0.5f;
+            }
+            else {
+                g = 1f;
+            }
+        }
+        myRend.material.color = new Color(r, g, b);
     }
 
     private void Update() {
