@@ -39,6 +39,7 @@ public class PlayerBehaviour : MonoBehaviour {
     }
 
     private void Update() {
+        transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
         timer += Time.deltaTime;
         reloadTimer += Time.deltaTime;
 
