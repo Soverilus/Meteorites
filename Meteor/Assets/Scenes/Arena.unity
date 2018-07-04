@@ -531,11 +531,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114408167152374830, guid: ff1a5e6794816bd4cb6d400c7b836231,
-        type: 2}
-      propertyPath: timer
-      value: 
-      objectReference: {fileID: 849864462}
     - target: {fileID: 114817665933531678, guid: ff1a5e6794816bd4cb6d400c7b836231,
         type: 2}
       propertyPath: shipSpawns.Array.data[0]
@@ -556,10 +551,11 @@ Prefab:
       propertyPath: shipSpawns.Array.data[3]
       value: 
       objectReference: {fileID: 70255054}
-    - target: {fileID: 1967428341022316, guid: ff1a5e6794816bd4cb6d400c7b836231, type: 2}
-      propertyPath: m_TagString
-      value: Spawner
-      objectReference: {fileID: 0}
+    - target: {fileID: 114408167152374830, guid: ff1a5e6794816bd4cb6d400c7b836231,
+        type: 2}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 849864462}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff1a5e6794816bd4cb6d400c7b836231, type: 2}
   m_IsPrefabParent: 0
