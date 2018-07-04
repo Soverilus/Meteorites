@@ -26,10 +26,10 @@ public class ScreenWrap : MonoBehaviour {
         maxZ = myCol.bounds.extents.z;
     }
     void GetSpawnExtents() {
-        spawnExtents[0] = new Vector3(-maxX - 0.5f, 0, maxZ + 0.5f);
-        spawnExtents[1] = new Vector3(maxX + 0.5f, 0, maxZ + 0.5f);
-        spawnExtents[2] = new Vector3(maxX + 0.5f, 0, -maxZ - 0.5f);
-        spawnExtents[3] = new Vector3(-maxX - 0.5f, 0, -maxZ - 0.5f);
+        spawnExtents[0] = new Vector3(-maxX, 0, maxZ);
+        spawnExtents[1] = new Vector3(maxX, 0, maxZ);
+        spawnExtents[2] = new Vector3(maxX, 0, -maxZ);
+        spawnExtents[3] = new Vector3(-maxX, 0, -maxZ);
     }
 
     private void OnTriggerStay(Collider other) {

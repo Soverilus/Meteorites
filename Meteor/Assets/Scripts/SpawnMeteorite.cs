@@ -8,6 +8,7 @@ public class SpawnMeteorite : MonoBehaviour {
     public void SpawnOne(int meteorType, Vector3 pos) {
         GameObject newMeteor = Instantiate(Meteorites[meteorType], pos, Quaternion.identity);
         MeteorBehaviour mScript = newMeteor.GetComponent<MeteorBehaviour>();
-        mScript.StartingVelocity(-transform.position);
+        mScript.newSpawned = true;
+        mScript.StartingVelocity(-pos);
     }
 }

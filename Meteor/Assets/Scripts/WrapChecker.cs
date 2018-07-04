@@ -38,6 +38,7 @@ public class WrapChecker : MonoBehaviour {
         minZ = dowZ;
     }
     private void Update() {
+        //Debug.Log(Time.deltaTime);
         if (collisionTimer < collisionTimerMax) {
             collisionTimer += Time.deltaTime;
         }

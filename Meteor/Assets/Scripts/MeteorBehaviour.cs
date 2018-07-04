@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeteorBehaviour : MonoBehaviour {
+    float frames;
     [SerializeField]
     float speed;
 
     public float dist;
+    public bool newSpawned;
 
     [SerializeField]
     int meteorLevel;
@@ -27,7 +29,9 @@ public class MeteorBehaviour : MonoBehaviour {
     }
 
     void Update() {
-        if (myRB.velocity.magnitude <= 0.0001f) {
+        frames = Time.deltaTime;
+        Debug.Log(frames);
+        if (myRB.velocity.magnitude <= 0.00001f && !newSpawned) {
             StartingVelocity(new Vector3(Random.Range(-100f, 100f), 0f, Random.Range(-100f, 100f)));
         }
     }
@@ -37,6 +41,7 @@ public class MeteorBehaviour : MonoBehaviour {
         Vector3 dir = i.normalized;
         myRB.velocity = dir * speed;
         myRB.AddTorque(new Vector3(Random.Range(-150f * myRB.mass, 150f * myRB.mass), Random.Range(-150f * myRB.mass, 150f * myRB.mass), Random.Range(-150f * myRB.mass, 150f * myRB.mass)));
+        newSpawned = false;
     }
     private void OnCollisionEnter(Collision other) {
         if (other.gameObject.GetComponent<MeteorBehaviour>() != null) {
@@ -57,10 +62,10 @@ public class MeteorBehaviour : MonoBehaviour {
     public void DamageMe(int dmg, Transform other, bool playerShot) {
         curHealth -= dmg;
         if (curHealth <= 0) {
-            if (playerShot) {
+            if (playerShot && frames < 0.02f) {
                 SplitAttack(other);
             }
-            else {
+            else if (frames < 0.02f) {
                 SplitMore(other);
             }
             Destroy(gameObject);
