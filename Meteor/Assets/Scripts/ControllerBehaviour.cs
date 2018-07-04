@@ -8,9 +8,14 @@ public class ControllerBehaviour : MonoBehaviour {
     [SerializeField]
     Text timer;
     public float timerTime = 10f;
+    float originalTime;
     public List<GameObject> myShips;
 
-    void Start() {
+    void Awake() {
+        originalTime = timerTime;
+        foreach (GameObject myShip in GameObject.FindGameObjectsWithTag("Player")) {
+            Destroy(myShip);
+        }
     }
 
     void FindShips() {
@@ -25,6 +30,9 @@ public class ControllerBehaviour : MonoBehaviour {
     void Update() {
         if (timerTime > 0f) {
             FindShips();
+            if (myShips.Count < 1) {
+                timerTime = originalTime;
+            }
         }
         if (timer != null) {
             TickTock();

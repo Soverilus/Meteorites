@@ -83,6 +83,6 @@ public class ScreenWrap : MonoBehaviour {
             Debug.Log("Error: ScreenWrap spawn extents reporting value above maximum");
         }
         spawnOne.SpawnOne(meteorType, pos);
-        Debug.Log(pos);
+        //Debug.Log(pos);
     }
 }

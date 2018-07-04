@@ -30,7 +30,7 @@ public class MeteorBehaviour : MonoBehaviour {
 
     void Update() {
         frames = Time.deltaTime;
-        Debug.Log(frames);
+        //Debug.Log(frames);
         if (myRB.velocity.magnitude <= 0.00001f && !newSpawned) {
             StartingVelocity(new Vector3(Random.Range(-100f, 100f), 0f, Random.Range(-100f, 100f)));
         }
