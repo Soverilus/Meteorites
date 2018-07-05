@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour {
     //sorry for the lack of commenting. I was trying to get this done as quickly as possible. If you're reading this then I didn't have time later in the week to add comments to everything.
     float timer;
+    ControllerBehaviour listReference;
 
     MeshRenderer myRend;
 
@@ -36,6 +37,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public float speed;
 
     void Start() {
+        listReference = GameObject.FindGameObjectWithTag("Spawner").GetComponent<ControllerBehaviour>();
         myRend = GetComponent<MeshRenderer>();
         SetPlayerColor();
         curLives = maxLives;
@@ -129,6 +131,12 @@ public class PlayerBehaviour : MonoBehaviour {
         if (gameStart) {
             curLives -= 1;
             if (curLives <= 0) {
+                GameObject[] wings = new GameObject[transform.childCount];
+                for (int i = 0; i < wings.Length; i++) {
+                    wings[i] = transform.GetChild(i).gameObject;
+                    listReference.myShips.Remove(wings[i]);
+                }
+                listReference.myShips.Remove(gameObject);
                 Destroy(gameObject);
             }
         }

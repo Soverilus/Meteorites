@@ -26,7 +26,7 @@ public class GameEnd : MonoBehaviour {
         }
 		if (hasList) {
             listCount = myTimer.myShips.Count;
-            if (listCount <= 3) {
+            if (listCount == 1) {
                 Time.timeScale = 0;
                 gameEndPanel.SetActive(true);
                 foreach (GameObject playerObj in myTimer.myShips) {

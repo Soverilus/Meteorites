@@ -24,13 +24,16 @@ public class ControllerBehaviour : MonoBehaviour {
             if (!myShips.Contains(myShip)) {
                 myShips.Add(myShip);
             }
+            if (myShip == null) {
+                myShips.Remove(myShip);
+            }
         }
     }
 
     void Update() {
         if (timerTime > 0f) {
             FindShips();
-            if (myShips.Count < 4) {
+            if (myShips.Count < 2) {
                 timerTime = originalTime;
             }
         }
