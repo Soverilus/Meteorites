@@ -201,6 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3683d832d75df504b84831f5b5be6759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDeath: {fileID: 1175364980994796, guid: be97a6448aef8fe45bbfe7ddfeeccf7e,
+    type: 2}
   gameStart: 0
   player: 0
   maxLives: 4

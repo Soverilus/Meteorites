@@ -7,6 +7,7 @@ public class MeteorBehaviour : MonoBehaviour {
     [SerializeField]
     float speed;
 
+    public GameObject destroyEffect;
     public float dist;
     public bool newSpawned;
 
@@ -73,6 +74,7 @@ public class MeteorBehaviour : MonoBehaviour {
     }
 
     void SplitMore(Transform otherPos) {
+        SpawnDestroyEffect();
         if (meteorLevel != 0) {
             GameObject newMeteor0 = Instantiate(meteorSubtype, transform.position + otherPos.transform.right * dist, Quaternion.identity);
             GameObject newMeteor1 = Instantiate(meteorSubtype, transform.position + otherPos.transform.right * -dist, Quaternion.identity);
@@ -88,6 +90,7 @@ public class MeteorBehaviour : MonoBehaviour {
         }
     }
     void SplitAttack(Transform otherPos) {
+        SpawnDestroyEffect();
         if (meteorLevel != 0) {
             GameObject newMeteor0 = Instantiate(meteorSubtype, transform.position + otherPos.transform.right * dist, Quaternion.identity);
             GameObject newMeteor1 = Instantiate(meteorSubtype, transform.position + otherPos.transform.right * -dist, Quaternion.identity);
@@ -99,5 +102,8 @@ public class MeteorBehaviour : MonoBehaviour {
             nM0.StartingVelocity(myRB.velocity);
             nM1.StartingVelocity(combDir);
         }
+    }
+    void SpawnDestroyEffect() {
+        Instantiate(destroyEffect, transform.position, Quaternion.identity);
     }
 }

@@ -26,7 +26,6 @@ GameObject:
   - component: {fileID: 64040720243709362}
   - component: {fileID: 114600946563535044}
   - component: {fileID: 114970206983446416}
-  - component: {fileID: 114168355163833320}
   m_Layer: 10
   m_Name: MeteoriteS0
   m_TagString: Meteorite
@@ -118,17 +117,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 6f229da74ba89154b92752f4f5c80f9d, type: 3}
---- !u!114 &114168355163833320
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1288776019574016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a966720c461c9ae4d84acab85fb5ee09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114237350913897420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,6 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
+  destroyEffect: {fileID: 1479784797208790, guid: bbdd82871a1135a41acd5681304840fa,
+    type: 2}
   dist: 0
   newSpawned: 0
   meteorLevel: 0

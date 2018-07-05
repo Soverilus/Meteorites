@@ -144,6 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  destroyEffect: {fileID: 1479784797208790, guid: bbdd82871a1135a41acd5681304840fa,
+    type: 2}
   dist: 2.5
   newSpawned: 0
   meteorLevel: 2

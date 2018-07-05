@@ -13,20 +13,20 @@ public class GameEnd : MonoBehaviour {
     int playerNum;
 
     private void Start() {
-        gameEndPanel.SetActive(false);
+        if (gameEndPanel != null) {
+            gameEndPanel.SetActive(false);
+        }
         myTimer = GetComponent<ControllerBehaviour>();
-
     }
-
-    void Update () {
+    void Update() {
         if (myTimer.timerTime <= 0f) {
             if (!hasList) {
                 hasList = true;
             }
         }
-		if (hasList) {
+        if (hasList) {
             listCount = myTimer.myShips.Count;
-            if (listCount == 1) {
+            if (listCount == 1 && myTimer._forceGameStart != true) {
                 Time.timeScale = 0;
                 gameEndPanel.SetActive(true);
                 foreach (GameObject playerObj in myTimer.myShips) {
@@ -38,5 +38,5 @@ public class GameEnd : MonoBehaviour {
                 whoWin.text = "Player" + playerNum + " has Won!";
             }
         }
-	}
+    }
 }

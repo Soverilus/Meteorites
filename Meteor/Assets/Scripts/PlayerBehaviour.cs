@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour {
-    //sorry for the lack of commenting. I was trying to get this done as quickly as possible. If you're reading this then I didn't have time later in the week to add comments to everything.
+    [SerializeField]
+    GameObject playerDeath;
+    bool isQuitting = false;
     float timer;
     ControllerBehaviour listReference;
 
@@ -156,6 +158,14 @@ public class PlayerBehaviour : MonoBehaviour {
                 Destroy(gameObject);
             }
             myRend.material.color = Color.red;
+        }
+    }
+    private void OnApplicationQuit() {
+        isQuitting = true;
+    }
+    private void OnDestroy() {
+        if (!isQuitting) {
+            Instantiate(playerDeath, transform.position, Quaternion.identity);
         }
     }
 }

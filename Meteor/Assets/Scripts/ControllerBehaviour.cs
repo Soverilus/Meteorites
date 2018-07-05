@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ControllerBehaviour : MonoBehaviour {
+    public bool _forceGameStart;
     LobbyPlayerJoin gameStart;
     [SerializeField]
     Text timer;
@@ -12,6 +13,7 @@ public class ControllerBehaviour : MonoBehaviour {
     public List<GameObject> myShips;
 
     void Awake() {
+        _forceGameStart = false;
         Time.timeScale = 1f;
         originalTime = timerTime;
         foreach (GameObject wierdProblematicAutomatedGameObject in GameObject.FindGameObjectsWithTag("Player")) {
@@ -35,12 +37,15 @@ public class ControllerBehaviour : MonoBehaviour {
         }
         if (timerTime > 0f) {
             FindShips();
-            if (myShips.Count < 2) {
+            if (myShips.Count < 2 && !_forceGameStart) {
                 timerTime = originalTime;
             }
         }
         if (timer != null) {
             TickTock();
+        }
+        if (_forceGameStart) {
+            timerTime = -1f;
         }
     }
 
