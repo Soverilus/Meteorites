@@ -12,6 +12,7 @@ public class ControllerBehaviour : MonoBehaviour {
     public List<GameObject> myShips;
 
     void Awake() {
+        Time.timeScale = 1f;
         originalTime = timerTime;
         foreach (GameObject wierdProblematicAutomatedGameObject in GameObject.FindGameObjectsWithTag("Player")) {
             Destroy(wierdProblematicAutomatedGameObject);

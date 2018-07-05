@@ -204,13 +204,15 @@ MonoBehaviour:
   gameStart: 0
   player: 0
   maxLives: 4
+  curLives: 0
   rotateSpeed: 10
   maxAmmo: 4
+  ammo: 0
   shotSpeed: 7000
   cannon:
   - {fileID: 1489936496458330}
   - {fileID: 1346241529417188}
   bullet: {fileID: 1295533965248958, guid: 78326e399936059429ae11a7fb2d503d, type: 2}
-  reloadTime: 0
+  reloadTime: 2
   maxSpeed: 75
   speed: 6000

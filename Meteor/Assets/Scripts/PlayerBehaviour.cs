@@ -8,6 +8,7 @@ public class PlayerBehaviour : MonoBehaviour {
     ControllerBehaviour listReference;
 
     MeshRenderer myRend;
+    Color myRendOriginal;
 
     [HideInInspector]
     public bool gameStart = false;
@@ -15,7 +16,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     [SerializeField]
     int maxLives;
-    int curLives;
+    public int curLives;
 
     Quaternion rotationDir;
     Vector3 targetDir;
@@ -24,7 +25,7 @@ public class PlayerBehaviour : MonoBehaviour {
     Vector3 leftStickInput;
 
     public int maxAmmo;
-    int ammo;
+    public int ammo;
     bool shot = false;
     public float shotSpeed;
     [SerializeField]
@@ -32,6 +33,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public GameObject bullet;
     public float reloadTime;
     float reloadTimer;
+    float colorTimer;
 
     public float maxSpeed;
     public float speed;
@@ -69,12 +71,27 @@ public class PlayerBehaviour : MonoBehaviour {
             }
         }
         myRend.material.color = new Color(r, g, b);
+        myRendOriginal = myRend.material.color;
+        name = "Player" + player;
     }
 
     private void Update() {
         transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
         timer += Time.deltaTime;
-        reloadTimer += Time.deltaTime;
+        if (myRend.material.color == Color.red) {
+            colorTimer += Time.deltaTime;
+            if (colorTimer >= 0.5f) {
+                myRend.material.color = myRendOriginal;
+                colorTimer = 0f;
+            }
+        }
+        if (ammo == 0) {
+            reloadTimer += Time.deltaTime;
+            if (reloadTimer >= reloadTime) {
+                reloadTimer = 0f;
+                ammo = maxAmmo;
+            }
+        }
 
         if (gameStart) {
             InGameUpdate();
@@ -92,17 +109,12 @@ public class PlayerBehaviour : MonoBehaviour {
         if (leftStickInput.sqrMagnitude > 0.1f) {
             RotateForwards();
         }
-        if (Input.GetAxisRaw("Fire" + player) > 0 && ammo > 0 && shot == false) {
+        if (Input.GetAxisRaw("Fire" + player) > 0 && shot == false) {
             shot = true;
             Shoot();
-            ammo -= 1;
         }
         if (Input.GetAxisRaw("Fire" + player) < 1) {
             shot = false;
-        }
-        if (reloadTimer >= reloadTime && ammo < maxAmmo) {
-            ammo += 1;
-            reloadTimer = 0f;
         }
     }
 
@@ -120,16 +132,20 @@ public class PlayerBehaviour : MonoBehaviour {
     }
 
     void Shoot() {
-        //Debug.Log("I've shot you");
-        int whichCannon = Random.Range(0, 2);
-        GameObject projectile = Instantiate(bullet, cannon[whichCannon].transform.position, transform.rotation);
-        Rigidbody projRB = projectile.GetComponent<Rigidbody>();
-        projRB.velocity = -projectile.transform.forward * Time.deltaTime * shotSpeed;
+        if (ammo > 0) {
+            int whichCannon = Random.Range(0, 2);
+            GameObject projectile = Instantiate(bullet, cannon[whichCannon].transform.position, transform.rotation);
+            Rigidbody projRB = projectile.GetComponent<Rigidbody>();
+            projRB.velocity = -projectile.transform.forward * Time.deltaTime * shotSpeed;
+            ammo -= 1;
+        }
     }
 
     public void DamageMe(Transform other, bool playerShot) {
         if (gameStart) {
-            curLives -= 1;
+            if (myRend.material.color == myRendOriginal) {
+                curLives -= 1;
+            }
             if (curLives <= 0) {
                 GameObject[] wings = new GameObject[transform.childCount];
                 for (int i = 0; i < wings.Length; i++) {
@@ -139,6 +155,7 @@ public class PlayerBehaviour : MonoBehaviour {
                 listReference.myShips.Remove(gameObject);
                 Destroy(gameObject);
             }
+            myRend.material.color = Color.red;
         }
     }
 }
