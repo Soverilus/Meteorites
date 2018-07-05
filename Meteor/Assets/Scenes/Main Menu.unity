@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114817665933531678, guid: ff1a5e6794816bd4cb6d400c7b836231,
+        type: 2}
+      propertyPath: isArena
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff1a5e6794816bd4cb6d400c7b836231, type: 2}
   m_IsPrefabParent: 0
@@ -767,7 +772,7 @@ RectTransform:
   m_GameObject: {fileID: 816389582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.90909094, y: 1.1111112, z: 1}
+  m_LocalScale: {x: 0.909091, y: 1.1111113, z: 1}
   m_Children: []
   m_Father: {fileID: 1587562103}
   m_RootOrder: 0
@@ -809,7 +814,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: INSTRUCTIONS
+  m_Text: CONTROLS
 --- !u!222 &816389585
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1333,7 +1338,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.14400001}
   m_AnchorMax: {x: 0.5, y: 0.14400001}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 220, y: 30}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1587562104
 MonoBehaviour:

@@ -120,7 +120,7 @@ public class PlayerBehaviour : MonoBehaviour {
     }
 
     void Shoot() {
-        Debug.Log("I've shot you");
+        //Debug.Log("I've shot you");
         int whichCannon = Random.Range(0, 2);
         GameObject projectile = Instantiate(bullet, cannon[whichCannon].transform.position, transform.rotation);
         Rigidbody projRB = projectile.GetComponent<Rigidbody>();

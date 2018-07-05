@@ -890,6 +890,11 @@ Prefab:
       propertyPath: timerTime
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114817665933531678, guid: ff1a5e6794816bd4cb6d400c7b836231,
+        type: 2}
+      propertyPath: isArena
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff1a5e6794816bd4cb6d400c7b836231, type: 2}
   m_IsPrefabParent: 0

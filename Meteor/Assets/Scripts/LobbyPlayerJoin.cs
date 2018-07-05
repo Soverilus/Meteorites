@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class LobbyPlayerJoin : MonoBehaviour {
+    public bool isArena;
     bool doOnce = true;
     [HideInInspector]
     public bool gameStart = false;
@@ -25,7 +25,7 @@ public class LobbyPlayerJoin : MonoBehaviour {
     }
 
     void Update() {
-        if (!gameStart) {
+        if (!gameStart && isArena) {
             if (Input.GetAxis("AnyFire") > 0 || Input.GetAxis("AnySpecial") > 0) {
                 for (int j = 1; j <= 4; j++) {
                     if (Input.GetAxis("Fire" + j.ToString()) > 0 && playerConnect[j - 1] == false) {
